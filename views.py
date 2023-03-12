@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect
-import random
+import scrape
 
 views = Blueprint(__name__, "views")
 
@@ -21,5 +21,6 @@ def jobs():
     args = request.args
     title = args.get('title')
     location = args.get('location')
-
+    scrape.run(f"http://127.0.0.1:5000/views/jobs?title={title}&location={location}" )
+#asynchronous vs. synchronous, should use cached
     return render_template("jobs.html", title=title, location=location)
