@@ -64,6 +64,7 @@ def run(url):
 			job["rating"] = get_security_rating(rating_url)
 		except:
 			continue
-	
+	jobs = sorted(jobs, key=lambda d: d['rating'], reverse=True)
+
 	with open('jobs.json', 'w') as outfile:
 		json.dump(jobs, outfile)
