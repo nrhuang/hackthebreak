@@ -1,4 +1,4 @@
-body {
+/* body {
     margin: 30px;
 }
 .parent {
@@ -18,19 +18,17 @@ body {
     font-size: 24px;
     font-weight: bold;
 }
+ */
 
 
-
-
-
-/* body {
+body {
     margin: 0;
     padding: 0;
 }
 
 .header {
     height:100vh;
-    background-color: #bcf0fb;
+    background-color: white;
     background-size: cover;
     background-position: left;
     display: flex;
@@ -102,4 +100,4 @@ input {
 }
 .hide {
     display: none;
-} */
+}
