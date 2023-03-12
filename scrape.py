@@ -1,14 +1,14 @@
 # import module
 from bs4 import BeautifulSoup
-import pandas as pd
 from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
-def get_current_url(url, job_title, location):
+driver = webdriver.Chrome()
 
-	driver = webdriver.Chrome()
+def get_job_url(url, job_title, location):
+
 	driver.get(url)
 	time.sleep(1)
 	driver.find_element(By.XPATH, '//*[@id="text-input-what"]').send_keys(job_title)
@@ -23,7 +23,6 @@ def get_current_url(url, job_title, location):
 
 def scrape_job_details(url):
 	
-	driver = webdriver.Chrome()
 	driver.get(url)
    
 	jobs_list = []
@@ -33,15 +32,30 @@ def scrape_job_details(url):
 		try:
 			data = {
 				"job_title":jobs[i].find_element(By.CLASS_NAME, 'jobTitle').text,
-				"company_name":jobs[i].find_element(By.CLASS_NAME, 'companyName').text
+				"company_name":jobs[i].find_element(By.CLASS_NAME, 'companyName').text,
+				"rating": 0
 			}
 		except IndexError:
 			continue          
 		jobs_list.append(data)
-	print(jobs_list)
-	dataframe = pd.DataFrame(jobs_list)
 	
-	return dataframe
+	return jobs_list
 
-current_url = get_current_url('https://ca.indeed.com/','Data Scientist',"Vancouver")
-scrape_job_details(current_url)
+def get_review_url(company_name):
+	return "https://ca.indeed.com/cmp/" + company_name + "/reviews?fcountry=CA&ftopic=jobsecadv"
+
+def get_security_rating(url):
+	
+	driver.get(url)
+	return driver.find_element(By.CLASS_NAME, 'css-1b9j5z0').text
+
+
+def run():
+	job_url = get_job_url('https://ca.indeed.com/','Data Scientist',"Vancouver")
+	jobs = scrape_job_details(job_url)
+	for job in jobs:
+		rating_url = get_review_url(job["company_name"])
+		job["rating"] = get_security_rating(rating_url)
+	print(jobs)
+
+run()
