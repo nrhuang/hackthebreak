@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.header {
+    height:100vh;
+    background-color: #bcf0fb;
+    background-size: cover;
+    background-position: left;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    font-family: sans-serif;
+}
+h1 {
+    color: #fff;
+    margin-bottom: 50px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: left;
+}
+.search-field {
+    height: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+}
+.title {
+    width: 200px;
+}
+.location {
+    width: 100px;
+}
+.search-btn {
+    height: 40px;
+    width: 150px;
+    background: #e0bbe4;
+    border: none;
+    color: #000;
+    border-radius: 25px;
+}
+.search-btn:hover {
+    background: #d291bc;
+    cursor: pointer;
+}
+.form-box {
+    background: transparent;
+    padding: 0px;
+}
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+input {
+    font-size: 1rem;
+}
+.job-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    gap: 0.25 rem;
+    margin-top: 1rem;
+}
+.card {
+    border: 1px solid black;
+    background-color: white;
+    padding: 0.25rem;
+}
+.card > .header {
+    margin-bottom: 0.25rem;
+}
+.card > .body {
+    font-size: 0.8rem;
+    color: #777;
+}
+.hide {
+    display: none;
+}
