@@ -1,1 +1,0 @@
-[{"job_title": "Data Scientist Intern", "company_name": "KIDS' SHIELD SERVICES", "rating": "\u2013"}, {"job_title": "Machine Learning Engineering Co-op - Summer 2023", "company_name": "Rec Room", "rating": "2.5"}]

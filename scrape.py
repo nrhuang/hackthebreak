@@ -65,5 +65,5 @@ def run(url):
 		except:
 			continue
 	
-	with open('jobs.txt', 'w') as convert_file:
-		convert_file.write(json.dumps(jobs))
+	with open('jobs.json', 'w') as outfile:
+		json.dump(jobs, outfile)
