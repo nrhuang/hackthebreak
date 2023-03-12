@@ -1,26 +1,25 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request, redirect
+import random
 
 views = Blueprint(__name__, "views")
 
 @views.route("/")
-def home():
-    return render_template("index.html", name = "nicky")
+def index():
+    return render_template("index.html")
 
-@views.route("/profile")
-def profile():
+@views.route("/search", methods=['GET', 'POST'])
+def link():
     args = request.args
-    name = args.get('name')
-    return render_template("index.html", name = name)
+    title = args.get('title')
+    location = args.get('location')
+    url = f"http://127.0.0.1:5000/views/jobs?title={title}&location={location}" 
 
-@views.route("/json")
-def get_json():
-    return jsonify({'name': 'nicky', 'coolness': 10})
+    return redirect(url)
 
-@views.route("/data")
-def get_data():
-    data = request.json
-    return jsonify(data)
+@views.route("/jobs")
+def jobs():
+    args = request.args
+    title = args.get('title')
+    location = args.get('location')
 
-@views.route("/go-to-home")
-def go_to_home():
-    return redirect(url_for("views.home"))
+    return render_template("jobs.html", title=title, location=location)

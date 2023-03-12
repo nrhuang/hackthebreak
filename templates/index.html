@@ -11,13 +11,11 @@
         <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
         <body>
             <div class="header">
-                <form>
+                <form action="/views/jobs" class="form-box">
                     <h1>JobSecurity Hub</h1>
-                    <div class="form-box">
-                        <input type="text" class="search-field title" placeholder="Job Title...">
-                        <input type="text" class="search-field location" placeholder="Location...">
-                        <button class="search-btn" type="button">Search</button>
-                    </div>
+                    <input type="text" class="search-field title" name="title" placeholder="Job Title...">
+                    <input type="text" class="search-field title" name="location" placeholder="Location...">
+                    <input class="search-btn" type="submit" value="submit" value="Search">
                     <iconify-icon icon="material-symbols:lock"></iconify-icon>
                 </form>
 
